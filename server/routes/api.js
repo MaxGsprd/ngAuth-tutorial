@@ -62,4 +62,119 @@ router.post('/login', (req,res) => {
 });
 
 
+/**
+ * Api methods that fetch hard-coded events list object 
+ */
+router.get('/events', (req, res) => {
+    let events = [
+        {
+            "_id":"1",
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"2",
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id": 3,
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"4",
+            "name": "Math Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"5",
+            "name": "Salon du Bourget",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"6",
+            "name": "Salon du mariage",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"7",
+            "name": "Salon de l'auto",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"8",
+            "name": "Salon de l'agriculture",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+    ]
+    res.json(events)
+});
+
+
+router.get('/special', (req, res) => {
+    let events = [
+        {
+            "_id":"1",
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"2",
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id": 3,
+            "name": "Japan Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"4",
+            "name": "Math Expo",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"5",
+            "name": "Salon du Bourget",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"6",
+            "name": "Salon du mariage",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"7",
+            "name": "Salon de l'auto",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+        {
+            "_id":"8",
+            "name": "Salon de l'agriculture",
+            "description": "lorem ipsum",
+            "date": "2020-06-23T18:25:43.511Z"
+        },
+    ]
+    res.json(events)
+});
+
+
+
+
 module.exports = router;
