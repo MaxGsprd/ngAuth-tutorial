@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * REGISTER METHOD
  * Extract the userData from the request object, 
  * convert it into the model Mongoose understand 
  * and then save the user in the database
@@ -35,5 +36,30 @@ router.post('/register', (req,res) => {
         }
     })
 })
+
+/**
+ * LOGIN METHOD
+ * extract user info from request & then check if user email exist in db 
+ * by using the findOne method from Mongoose module.
+ */
+router.post('/login', (req,res) => {
+    let userData = req.body;
+    User.findOne({email: userData.email}, (err, user) => {  
+        if (err) {
+            console.log(err);
+        } else {
+            if (!user) {  // if no user is found
+                res.status(401).send('Invalid email');
+            } else {
+                if (user.password !== userData.password) {
+                    res.status(401).send('Invalid password')
+                } else {
+                    res.status(200).send(user);
+                }
+            }
+        }
+    })
+});
+
 
 module.exports = router;
