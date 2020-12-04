@@ -75,13 +75,13 @@ router.get('/events', (req, res) => {
         },
         {
             "_id":"2",
-            "name": "Japan Expo",
+            "name": "Ocktober Fest",
             "description": "lorem ipsum",
             "date": "2020-06-23T18:25:43.511Z"
         },
         {
             "_id": 3,
-            "name": "Japan Expo",
+            "name": "Astro Expo",
             "description": "lorem ipsum",
             "date": "2020-06-23T18:25:43.511Z"
         },
@@ -173,8 +173,5 @@ router.get('/special', (req, res) => {
     ]
     res.json(events)
 });
-
-
-
 
 module.exports = router;
