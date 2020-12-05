@@ -8,11 +8,11 @@
                 <form class="form">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input [(ngModel)]="registerUserData.email" name="email" type="text" class="form-control rounded-O" required>
+                    <input [(ngModel)]="registerUserData.email" name="email" type="text" class="form-control rounded-O" required autocomplete="on">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-O" required>
+                    <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-O" required autocomplete="on">
                 </div>
                 <button (click)="registerUser()" type="button" class="btn btn-primary float-right">Register</button>
                 </form>

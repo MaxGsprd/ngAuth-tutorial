@@ -9,10 +9,15 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private _registerUrl = "http://localhost:3000/api/register";
+  private _loginUrl = "http://localhost:3000/api/login";
 
   constructor(private http :HttpClient) { }
 
   saveUser(user: any) :Observable<any>{
     return this.http.post<any>(this._registerUrl, user)
+  }
+
+  loginUser(user: any) :Observable<any>{
+    return this.http.post<any>(this._loginUrl, user)
   }
 }
