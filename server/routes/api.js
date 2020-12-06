@@ -1,6 +1,7 @@
 // Api allowing to register users in the MongoDB database.
 
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/user');
 const mongoose = require('mongoose');
@@ -23,7 +24,8 @@ router.get('/', (req, res) => {
  * REGISTER METHOD
  * Extract the userData from the request object, 
  * convert it into the model Mongoose understand 
- * and then save the user in the database
+ * if no error found, init a payload object with the registeredUser._id as a key (subject by convention)
+ * then we create a token with jwt.sign(). Finally we send the token.
  */
 router.post('/register', (req,res) => {
     let userData = req.body;
@@ -32,7 +34,11 @@ router.post('/register', (req,res) => {
         if (err) {
             console.log(err);
         } else {
-            res.status(200).send(registeredUser);
+            let payload = { subject: registeredUser._id};
+            let token = jwt.sign(payload, 'secretKey')
+            res.status(200).send({token});
+            // this syntax is an object with a key "token".
+            // {token: {let token value}}
         }
     })
 })
@@ -41,6 +47,7 @@ router.post('/register', (req,res) => {
  * LOGIN METHOD
  * extract user info from request & then check if user email exist in db 
  * by using the findOne method from Mongoose module.
+ * if no error found, if checks are valid, create a payload, init a token and send it to db.
  */
 router.post('/login', (req,res) => {
     let userData = req.body;
@@ -54,7 +61,9 @@ router.post('/login', (req,res) => {
                 if (user.password !== userData.password) {
                     res.status(401).send('Invalid password')
                 } else {
-                    res.status(200).send(user);
+                    let payload = {subject: user._id}
+                    let token = jwt.sign(payload, 'secretKey');
+                    res.status(200).send({token});
                 }
             }
         }

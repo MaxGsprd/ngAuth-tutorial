@@ -8,7 +8,7 @@ import {EventService} from '../../services/event.service';
 })
 export class EventsComponent implements OnInit {
 
-  events : any[] = [];
+  events: any[] = [];
 
   constructor(private _eventService :EventService) { }
 
