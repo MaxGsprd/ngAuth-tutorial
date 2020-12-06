@@ -16,6 +16,26 @@ mongoose.connect(db,{ useNewUrlParser: true, useUnifiedTopology: true}, (err) =>
     }
 })
 
+/**
+ * VERIFY ToKEN Method
+ * check the token in the request headers.
+ */
+function verifyToken(req, res, next) {
+    if (!req.headers.authorization) {
+        return res.status(401).send('Unauthorized request man !');
+    }
+    let token = req.headers.authorization.split(' ')[1] // get the content in token (index 1 in arr)
+    if (token === null || token === 'null') {
+        return res.status(401).send('Unauthorized request brah !');
+    }
+    let payload = jwt.verify(token, 'secretKey'); // this method return the token only if valid
+    if (!payload) {
+        return res.status(401).send('Unauthorized request goddamn !');
+    }
+    req.userId = payload.subject;
+    next();
+}
+
 router.get('/', (req, res) => {
     res.send('Hello again but from API route');
 });
@@ -129,7 +149,7 @@ router.get('/events', (req, res) => {
 });
 
 
-router.get('/special', (req, res) => {
+router.get('/special', verifyToken, (req, res) => {
     let events = [
         {
             "_id":"1",
