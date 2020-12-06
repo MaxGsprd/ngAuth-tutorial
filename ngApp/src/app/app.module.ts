@@ -23,7 +23,7 @@ import { SpecialEventsComponent } from './components/special-events/special-even
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

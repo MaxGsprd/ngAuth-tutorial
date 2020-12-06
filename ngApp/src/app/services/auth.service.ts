@@ -20,4 +20,9 @@ export class AuthService {
   loginUser(user: any) :Observable<any>{
     return this.http.post<any>(this._loginUrl, user)
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+    // the double !! return a boolean instead of the token itself. I.e if the token is present in the localstorage
+  }
 }
