@@ -25,4 +25,8 @@ export class AuthService {
     return !!localStorage.getItem('token');
     // the double !! return a boolean instead of the token itself. I.e if the token is present in the localstorage
   }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
